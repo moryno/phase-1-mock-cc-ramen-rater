@@ -1,5 +1,5 @@
 // write your code here
-// Initial render, get data and append to the DOM
+// Form to add and update the menus
 const form = document.querySelector("form");
 form.addEventListener("submit", handleSubmit)
 
@@ -15,13 +15,13 @@ function handleSubmit(event){
     }
     renderOneData(menuObj)
     addRamens(menuObj)
-    displayInfo(menuObj)
+  
 }
 
-
+// Initial render, get data and append to the DOM
 const init = () => getData();
 
-
+// Function to fetch data from the DB
 const getData = () => {
     fetch("http://localhost:3000/ramens")
              .then(res => res.json())
@@ -29,6 +29,7 @@ const getData = () => {
              .catch(err => console.log(err.message))
 }
 
+// Function to render each menu items and populate the website on load
 const renderOneData = (item) => {
     const parentDiv = document.querySelector("#ramen-menu");
     const image = document.createElement("img");
@@ -61,12 +62,8 @@ const displayInfo = (id) => {
         rating.textContent = `${data.rating}`;
         comment.textContent = `${data.comment}`
      })
-     
+
      .catch(err => console.log(err.message))
-
-
-
-
 
 }
 
